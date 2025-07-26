@@ -85,6 +85,7 @@ def action_node(state: AgentState) -> AgentState:
             output: Any = tool_function.invoke(input = parsed_input)
         except Exception as e:
             print(f"Unexpected Error occurs {str(e)}")
+            output = f"Error occurred while executing tool {tool_name}: {str(e)}"
     else:
         output = f"Tool {tool_name} not found."
     
