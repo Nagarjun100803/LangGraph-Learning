@@ -1,3 +1,15 @@
 .env
 __pycache__/
 __pycache__
+resume_miner/
+*resume_miner.ipynb
+human*.py
+webinar.md
+checkpoints*
+training/
+vrnexgen_bot/
+*.pkl
+*.md
+12_vector_db.ipynb
+10*.ipynb
+11*.ipynb

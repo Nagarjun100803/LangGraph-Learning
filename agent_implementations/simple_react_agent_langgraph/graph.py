@@ -1,15 +1,14 @@
-from altair import Dict
 from agent import agent
 from langgraph.graph import StateGraph, END
 import operator
-from typing import Any, List, Tuple, TypedDict, Annotated
+from typing import Any, List, Tuple, TypedDict, Annotated, Dict
 from langchain_core.agents import AgentAction, AgentFinish
 import json 
 from tools import available_tools
 from langchain_core.tools import BaseTool
 from dotenv import load_dotenv
 from langchain_core.exceptions import OutputParserException
-from langchain_tavily import  TavilySearch
+from langchain_tavily import TavilySearch
 
 
 
@@ -63,7 +62,7 @@ def action_node(state: AgentState) -> AgentState:
     tool_name: str = agent_action.tool
     tool_input: str = agent_action.tool_input
 
-    tools_by_name: Dict[str, [BaseTool | TavilySearch]] = {tool.name: tool for tool in available_tools}
+    tools_by_name: Dict[str, BaseTool | TavilySearch] = {tool.name: tool for tool in available_tools} 
     # Find the matching tool function.
     tool_function: BaseTool | None = tools_by_name.get(tool_name)
     print(f"Current tool name: {tool_name}", end = "\n")
